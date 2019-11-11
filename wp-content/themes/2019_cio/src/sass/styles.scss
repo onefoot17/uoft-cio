@@ -1,0 +1,54 @@
+//Font Awesome
+@import '../font-awesome/fontawesome';
+@import "../font-awesome/solid.scss";
+@import "../font-awesome/brands.scss";
+
+// Intialization
+@import '_reset';
+@import '_variables';
+@import '_mixins';
+
+body {
+    @include line-height(
+        $line-height: 1
+    );
+    
+    background-color: var(--gray-light);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Open Sans', Arial, Helvetica, Verdana, sans-serif;
+    min-height: 100vh;
+    padding: $padding/2;
+    word-break: break-word;
+
+    @include for-phone-only {
+        &.menu-is-open {
+            position: fixed;
+            overflow: hidden;
+        }
+    }
+}
+
+img {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+button {
+    @include button-styles;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+p {
+    @include line-height;
+
+    font-size: 1.2rem;
+}
+
+a {
+    color: inherit;
+}

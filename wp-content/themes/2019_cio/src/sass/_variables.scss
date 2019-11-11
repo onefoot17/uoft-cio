@@ -1,0 +1,62 @@
+// Colours
+$black: #271100 !default;
+$blue-very-light: #7ba4d9 !default;
+$blue-light: #336699 !default;
+$blue-medium: #008bb0 !default;
+$blue-dark: #002a5c !default;
+$gray-light: #cecfcb !default;
+$gray-medium: #999999 !default;
+$gray-dark: #666666 !default;
+$green-very-light: #dae5cd !default;
+$green-light: #99cc99 !default;
+$green-medium: #339933 !default;
+$gold-very-light: #FAFAD2 !default;
+$gold-light: #ffcc33 !default;
+$gold-medium: #ffe498 !default;
+$white: #ffffff !default;
+
+// Spacing
+$section-width: 960px;
+$margin: 1rem !default;
+$padding: 1rem !default;
+
+// Class names
+$es: '__' !default; // Element separator
+$ms: '--' !default; // Modifier separator
+$header: 'header' !default;
+$nav: 'nav' !default;
+$section: 'section' !default;
+$carousel: 'carousel' !default;
+$alerts: 'alerts' !default;
+$news: 'news' !default;
+$follow: 'follow' !default;
+$highlights: 'highlights' !default;
+$footer: 'footer' !default;
+
+// CSS variables
+// Convert Hex values to RGBA if needed
+@function hex-to-rgb( $hex ) {
+    @return red( $hex ), green( $hex ), blue( $hex );
+}
+:root {
+    --black: #{ $black };
+    --blue-very-light: #{ $blue-very-light };
+    --blue-light: #{ $blue-light };
+    --blue-light--rgb: #{ hex-to-rgb( $blue-light ) };
+    --blue-medium: #{ $blue-medium };
+    --blue-medium--rgb: #{ hex-to-rgb( $blue-medium ) };
+    --blue-dark: #{ $blue-dark };
+    --blue-dark--rgb: #{ hex-to-rgb( $blue-dark ) };
+    --gray-light: #{ $gray-light };
+    --gray-medium: #{ $gray-medium };
+    --gray-dark: #{ $gray-dark };
+    --green-very-light: #{ $green-very-light };
+    --green-light: #{ $green-light };
+    --green-medium: #{ $green-medium };
+    --gold-very-light: #{ $gold-very-light };
+    --gold-light: #{ $gold-light };
+    --gold-medium: #{ $gold-medium };
+    --white: #{ $white };
+    --margin: #{ $margin };
+    --padding: #{ $padding };
+}

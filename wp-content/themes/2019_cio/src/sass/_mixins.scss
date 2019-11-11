@@ -1,0 +1,135 @@
+// Media Queries
+@mixin for-phone-only {
+    @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+    @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+    @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+    @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+    @media (min-width: 1800px) { @content; }
+}
+  
+// Buttons
+@mixin button-styles( $background-color: var(--blue-light), $border-color: transparent, $color: var(--white), $font-size: 1.4rem, $padding: $padding/1.5 $padding*2, $text-decoration: none ) {
+    background-color: $background-color;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    color: $color;
+    font-size: $font-size;
+    padding: $padding;
+    text-decoration: $text-decoration;
+}
+
+@mixin button-hover( $button: button, $background-color: var(--gray-medium), $border-color: $background-color, $color: var(--black) ) {
+    @if $button == button {
+        &:hover {
+            background-color: $background-color;
+            border-color: $background-color;
+            color: $color;
+        }
+    } @else if $button == outside_link {
+        &:hover button {
+            background-color: $background-color;
+            border-color: $background-color;
+            color: $color;
+        }
+    } @else if $button == inside_link {
+        &:hover a {
+            background-color: $background-color;
+            border-color: $background-color;
+            color: $color;
+        }
+    }
+}
+
+// Spacing
+@mixin display-flex( $align-items: center, $flex-basis: auto, $flex-grow: 0, $flex-shrink: 0, $flex-wrap: wrap, $justify-content: space-between, $media-queries: true ) {
+    align-items: $align-items;
+    display: flex;
+    flex-wrap: $flex-wrap;
+    justify-content: $justify-content;
+
+    @if $media-queries {
+        @include for-phone-only {
+            flex-wrap: wrap;
+        }
+    }
+
+    > * {
+        flex: $flex-grow $flex-shrink $flex-basis;
+
+        @if $media-queries {
+            @include for-phone-only {
+                flex-basis: 100%;
+            }
+        }
+    }
+}
+
+// Ratio
+@mixin ratio( $ratio: 1_1 ) {
+    overflow: hidden;
+    position: relative;
+
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+
+        @if $ratio == 16_9 {
+            // 16:9 - 56.25%
+            padding-top: 56.25%;
+        } @else if $ratio == 4_3 {
+            // 4:3 - 75%
+            padding-top: 56.25%;
+        } @else if $ratio == 3_2 {
+            // 3:2 - 66.66%
+            padding-top: 56.25%;
+        } @else if $ratio == 8_5 {
+            // 8:5 - 62.5%
+            padding-top: 56.25%;
+        } @else {
+            // 1:1 - 100%
+            padding-top: 100%;
+        }
+    }
+
+    :first-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+// Typography
+@mixin line-height( $line-height: 1.3em ) {
+    line-height: $line-height;
+}
+
+// Animation
+@mixin transition( $transition-property: all, $transition-duration: 200ms, $transition-timing-function: ease-in-out ) {
+    transition: $transition-property $transition-duration $transition-timing-function;
+}
+
+// Gradients
+@mixin background-gradient( $gradient-direction: linear, $gradient-color-1: var(--white), $gradient-color-2: var(--gray-light) ) {
+    @if $gradient-direction == 'diagonal' {
+        background: linear-gradient(45deg, $gradient-color-1 0%, $gradient-color-2 25%, $gradient-color-2 25%, $gradient-color-1 75%, $gradient-color-2 100%);
+    } @else {
+        background: linear-gradient(to bottom, $gradient-color-1 0%, $gradient-color-2 100% );
+    }
+}
+
+//Color
+@mixin background-color-rgba( $color-hex, $color-opacity ) {
+    background-color: $color-hex;
+    background-color: rgba( $color-hex, $color-opacity );
+}
