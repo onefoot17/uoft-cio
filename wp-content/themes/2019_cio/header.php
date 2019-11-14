@@ -18,18 +18,16 @@
             <section class="header__logos">
                 <a class="header__logos__uoft" href="<?php echo get_site_url(); ?>" title="<?php echo get_bloginfo( 'name' ); ?>"><img class="header__logo" src="https://cio.utoronto.ca/wp-content/themes/ITS_uoft_bootstrap3_v203_sp/_inc/img/U-of-T-logo.svg" /></a>
 
-                <a class="header__logos__its" href="" title="">
-                    <span class="header__logos__its__top">ITS</span>
+                <a class="header__logos__cio" href="" title="">
+                    <span class="header__logos__cio__top">Office of the</span>
 
-                    <span class="header__logos__its__bottom">Information Technology Services</span>
+                    <span class="header__logos__cio__bottom">Chief<br />Information<br />Officer</span>
                 </a>
 
-                <a href="#menu-main" data-href="#menu-main" id="menu-main-toggle" class="menu-toggle" aria-label="Open main menu" aria-expanded="false" aria-controls="menu-main">
-                    <span class="sr-only">Open main menu</span>
-
-                    <span class="fa fa-bars" aria-hidden="true"></span>
-                </a>
+                <?php get_template_part( 'nav' ); ?>
             </section>
 
-            <?php get_template_part( 'nav' ); ?>
+            <section>
+                <img class="header__photo" src="https://cio.utoronto.ca/wp-content/uploads/2019/06/Bo-e1560889507517.jpg" />
+            </section>
         </header>

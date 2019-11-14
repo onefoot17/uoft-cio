@@ -1,5 +1,5 @@
 // Colours
-$black: #271100 !default;
+$black: #000000 !default;
 $blue-very-light: #7ba4d9 !default;
 $blue-light: #336699 !default;
 $blue-medium: #008bb0 !default;
@@ -7,6 +7,7 @@ $blue-dark: #002a5c !default;
 $gray-light: #cecfcb !default;
 $gray-medium: #999999 !default;
 $gray-dark: #666666 !default;
+$gray-very-dark: #343434 !default;
 $green-very-light: #dae5cd !default;
 $green-light: #99cc99 !default;
 $green-medium: #339933 !default;
@@ -26,11 +27,9 @@ $ms: '--' !default; // Modifier separator
 $header: 'header' !default;
 $nav: 'nav' !default;
 $section: 'section' !default;
-$carousel: 'carousel' !default;
-$alerts: 'alerts' !default;
 $news: 'news' !default;
-$follow: 'follow' !default;
 $highlights: 'highlights' !default;
+$follow: 'follow' !default;
 $footer: 'footer' !default;
 
 // CSS variables
@@ -50,6 +49,7 @@ $footer: 'footer' !default;
     --gray-light: #{ $gray-light };
     --gray-medium: #{ $gray-medium };
     --gray-dark: #{ $gray-dark };
+    --gray-very-dark: #{ $gray-very-dark };
     --green-very-light: #{ $green-very-light };
     --green-light: #{ $green-light };
     --green-medium: #{ $green-medium };
@@ -60,3 +60,6 @@ $footer: 'footer' !default;
     --margin: #{ $margin };
     --padding: #{ $padding };
 }
+
+// Typography
+$font-family: Arial, Helvetica, Verdana, sans-serif !default;

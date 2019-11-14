@@ -56,4 +56,52 @@
             return $classes;
         }
         add_filter( 'body_class', 'add_slug_body_class' );
+
+    /**
+     * Register widgetized area and update sidebar with default widgets
+     */
+    function uoft_bootstrap3_widgets_init() {
+        register_sidebar( array(
+            'name'          => __( 'Blog Sidebar', 'uoft_bootstrap3' ),
+            'id'            => 'sidebar-global',
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</aside>',
+            'before_title'  => '<h3 class="widget-title">',
+            'after_title'   => '</h3>',
+        ) );
+        register_sidebar( array(
+            'name'          => __( 'Homepage Features', 'uoft_bootstrap3' ),
+            'id'            => 'sidebar-features',
+            'before_widget' => '<aside id="%1$s" class="col-md-4 home-widget-container"><div class="widget %2$s">',
+            'after_widget'  => '</div></aside>',
+            'before_title'  => '<h3 class="widget-title">',
+            'after_title'   => '</h3>',
+        ) );
+        register_sidebar( array(
+            'name'          => __( 'Subpage Sidebar', 'uoft_bootstrap3' ),
+            'id'            => 'sidebar-subpage',
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</aside>',
+            'before_title'  => '<h3 class="widget-title">',
+            'after_title'   => '</h3>',
+        ) );
+        // register_sidebar( array(
+        // 	'name'          => __( 'CBC Sidebar', 'uoft_bootstrap3' ),
+        // 	'id'            => 'sidebar-cbc',
+        // 	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        // 	'after_widget'  => '</aside>',
+        // 	'before_title'  => '<h3 class="widget-title">',
+        // 	'after_title'   => '</h3>',
+        // ) );
+
+        register_sidebar( array(
+            'name'          => __( 'Footer Sidebar', 'uoft_bootstrap3' ),
+            'id'            => 'sidebar-footer',
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h3 class="widget-title">',
+            'after_title'   => '</h3>',
+        ) );
+    }
+    add_action( 'widgets_init', 'uoft_bootstrap3_widgets_init' );
 ?>

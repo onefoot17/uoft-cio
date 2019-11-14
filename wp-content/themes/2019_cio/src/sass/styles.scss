@@ -16,7 +16,7 @@ body {
     background-color: var(--gray-light);
     display: flex;
     flex-direction: column;
-    font-family: 'Open Sans', Arial, Helvetica, Verdana, sans-serif;
+    font-family: $font-family;
     min-height: 100vh;
     padding: $padding/2;
     word-break: break-word;
@@ -51,4 +51,484 @@ p {
 
 a {
     color: inherit;
+}
+
+// Header
+.#{$header} {
+    @include display-flex(
+        $align-items: flex-start,
+        $flex-basis: 50%,
+        $justify-content: center
+    );
+    
+    background-color: var(--black);
+    
+    &#{$es}logos {
+        @include display-flex(
+            $align-items: flex-end,
+            $flex-wrap: nowrap,
+            $media-queries: false
+        );
+        @include for-phone-only {
+            align-items: center;
+            margin-bottom: $margin;
+        }
+
+        padding: $padding*2;
+
+        > * {
+            @include for-phone-only {
+                flex-basis: 45%;
+                flex-grow: 1;
+            }
+        }
+
+        &#{$es}uoft {
+            max-width: 225px;
+            padding-right: 32px;
+        }
+
+        &#{$es}cio {
+            border-left: 1px solid var(--white);
+            color: var(--white);
+            font-family: $font-family;
+            font-size: 2.6rem;
+            font-weight: 600;
+            padding: $padding/2 $padding*2;
+            padding-left: 32px;
+            text-decoration: none;
+            text-transform: uppercase;
+            
+            &#{$es}top {
+                display: block;
+                font-size: 1.4rem;
+                margin-bottom: $margin/2;
+            }
+        }
+    }
+}
+
+.content {
+    flex-grow: 1;
+}
+
+.#{$section} {
+    &#{$es}width {
+        margin: 0 auto;
+        max-width: $section-width;
+        overflow: hidden;
+        padding-top: $padding*4;
+        padding-bottom: $padding*4;
+    }
+
+    &#{$es}header {
+        @include display-flex;
+
+        padding: $padding;
+
+        > * {
+            @include for-phone-only {
+                text-align: center;
+            }
+        }
+    }
+
+    &#{$es}heading {
+        color: var(--blue-dark);
+    }
+
+    &#{$es}button {
+        @include button-hover;
+        @include transition;
+
+        @include for-phone-only {
+            margin-top: $margin;
+        }
+    }
+
+    &#{$es}posts {
+        @include display-flex(
+            $align-items: flex-start,
+            $flex-basis: 25%,
+            $flex-grow: 1
+        );
+
+        > * {
+            @include for-phone-only {
+                flex-basis: 100%;
+            }
+
+            padding: $padding;
+        }
+
+        // Pagination nav buttons
+        &-nav {
+            @include display-flex;
+
+            &#{$es}prev,
+            &#{$es}next {
+                @include button-styles( $background-color:transparent, $padding: 0 );
+                @include button-hover( inside_link );
+                @include for-phone-only {
+                    flex-basis: 50%;
+                }
+            }
+            
+            a {
+                @include button-styles;
+                @include display-flex(
+                    $flex-grow: 1,
+                    $flex-shrink: 1
+                );
+                @include transition;
+
+                > * {
+                    flex-basis: auto;
+                    padding: 0 $padding/2;
+                }
+            }
+        }
+    }
+
+    &#{$es}image-fallback {
+        @include display-flex( $justify-content: center);
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    &#{$es}link {
+        @include button-hover( outside_link );
+
+        &#{$es}title {
+            font-family: $font-family;
+            font-weight: 700;
+        }
+
+        button {
+            @include transition;
+        }
+
+        text-decoration: none;
+        
+        &#{$es}image {
+            border: 1px solid var(--gray-light);
+        }
+    }
+
+    // Category pages
+    &#{$ms}category {
+        background-color: $white;
+
+        &#{$es}width {
+            padding-top: initial;
+        }
+
+        &#{$es}post {
+            align-self: stretch;
+            display: flex;
+            @include for-tablet-portrait-up {
+                flex-basis: calc( 100% / 3 );
+            }
+            position: relative;
+        }
+
+        &#{$es}link {
+            @include button-hover;
+            @include transition;
+
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            position: relative;
+            
+            &#{$es}image-con {
+                @include ratio( 16_9 );
+            }
+        }
+
+        &#{$es}button {
+            @include button-styles( $padding: $padding/2 );
+            @include background-color-rgba( var(--blue-dark--rgb), 0.9 );
+            @include line-height;
+
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            text-align: left;
+            width: 100%;
+        }
+    }
+
+    // News
+    &#{$ms}#{$news} {
+        background-color: var(--white);
+        
+        &#{$es}button {
+            @include button-styles(
+                $background-color: transparent,
+                $color: $blue-dark
+            );
+        }
+
+        &#{$es}post {
+            display: flex;
+            align-self: stretch;
+        }
+        
+        &#{$es}link {
+            @include button-hover;
+            @include transition;
+            
+            border: 1px solid var(--gray-light);
+            color: var(--blue-dark);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            
+            &#{$es}image-con {
+                @include ratio( 16_9 );
+            }
+
+            &#{$es}image {
+                border: none;
+            }
+            
+            &#{$es}title {
+                @include line-height;
+                
+                font-size: 1.5rem;
+                font-weight: bold;
+                padding: $padding;
+            }
+        }
+    }
+    
+    // Highlights
+    &#{$ms}#{$highlights} {
+        &#{$es}postsCon {
+            @include display-flex(
+                $align-items: flex-start
+            );
+        }
+        
+        &#{$es}heading {
+            color: var(--blue-dark);
+            text-align: center;
+        }
+
+        &#{$es}posts {
+            @include for-tablet-portrait-up {
+                flex-basis: 100%;
+            }
+            @include for-tablet-landscape-up {
+                flex-basis: 75%;
+            }
+
+            > * {
+                flex-basis: 50%;
+                padding-right: $padding;
+
+                @include for-phone-only {
+                    flex-basis: 100%;
+                }
+            }
+        }
+
+        &#{$es}post {
+            display: flex;
+            align-self: stretch;
+            padding-top: 0;
+            padding-bottom: $padding*2;
+
+            &:nth-of-type(1) .section__link {
+                background: linear-gradient(45deg, var(--white) 0%, var(--gray-light) 5%, var(--gray-medium) 15%, var(--gray-dark) 35%, var(--gray-medium) 50%, var(--gray-light) 75%, var(--white) 100%);
+            }
+
+            &:nth-of-type(2) .section__link {
+                background: linear-gradient(225deg, var(--white) 0%, var(--blue-very-light) 5%, var(--blue-light) 15%, var(--blue-medium) 35%, var(--gray-medium) 50%, var(--gray-light) 75%, var(--white) 100%);
+            }
+
+            &:nth-of-type(3) .section__link {
+                background: linear-gradient(135deg, var(--white) 0%, var(--gold-very-light) 5%, var(--gold-light) 15%, var(--gold-medium) 35%, var(--gray-light) 50%, var(--gray-medium) 75%, var(--gray-dark) 100%);
+            }
+
+            &:nth-of-type(4) .section__link {
+                background: linear-gradient(315deg, var(--green-medium) 0%, var(--green-light) 15%, var(--green-very-light) 35%, var(--white) 50%, var(--gray-light) 75%, var(--gray-medium) 100%);
+            }
+        }
+
+        &#{$es}link {
+            @include background-gradient;
+
+            border: 1px solid var(--white);
+            color: var(--black);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: $padding*2;
+            text-align: center;
+
+            &#{$es}top {
+                margin-bottom: $margin*2;
+            }
+
+            &#{$es}title {
+                font-size: 3rem;
+                margin-bottom: $margin;
+            }
+            
+            &#{$es}button {
+                @include button-styles;
+                
+                display: inline-block;
+            }
+            
+            &#{$es}bottom {
+                @include display-flex(
+                    $align-items: flex-start
+                );
+                
+                > * {
+                    flex-basis: 50%;
+                    flex-grow: 1;
+                }
+            }
+                
+            &#{$es}excerpt {
+                @include line-height;
+
+                font-size: 1.5rem;
+                text-align: left;
+            }
+
+            &#{$es}excerpt + &#{$es}image-con {
+                padding-left: $padding;
+            }
+        }
+    
+        // Follow
+        &#{$es}#{$follow} {
+            @include for-tablet-portrait-up {
+                flex-basis: 100%;
+            }
+            @include for-tablet-landscape-up {
+                flex-basis: 25%;
+            }
+
+            align-self: stretch;
+
+            &#{$es}posts {
+                flex-direction: column;
+
+                :first-child {
+                    padding-top: 0;
+                }
+            }
+
+            &#{$es}post {
+                width: 100%;
+            }
+    
+            &#{$es}button {
+                @include button-styles;
+
+                &:before {
+                    content: "\f099";
+                    display: block;
+                    font-family: "Font Awesome 5 Brands";
+                    font-size: 2rem;
+                    padding-bottom: $padding;
+                }
+            }
+    
+            &#{$es}link {
+                &#{$es}button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+// Footer
+.#{$footer} {
+    background-color: var(--gray-very-dark);
+    color: var(--white);
+    font-size: 2rem;
+
+    .nav__menu--footer {
+        padding: 0 $padding*4 $padding*4;
+
+        > * {
+            @include display-flex(
+                $justify-content: center
+            );
+            @include line-height;
+            @include for-phone-only {
+                flex-basis: 100%;
+                margin-bottom: $margin;
+                margin-right: 0;
+
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+
+            align-self: stretch;
+            border: 3px dashed var(--blue-light);
+            flex: 1;
+            flex-direction: column;
+            margin-right: $margin*2;
+            padding-top: $padding*4;
+            padding-bottom: $padding*4;
+            text-align: center;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+    
+    &#{$es}bottom {
+        @include display-flex;
+
+        > * {
+            @include for-phone-only {
+                margin-bottom: $margin;
+                margin-right: 0;
+                
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        border-top: 1px solid var(--blue-light);
+        padding: $padding*2 $padding*2 0;
+    }
+}
+
+// Breadcrumbs
+.breadcrumbs {
+    background-color: $white;
+    font-size: 1.2rem;
+    padding: $padding;
+
+    a {
+        color: $gray-medium;
+        text-decoration: none;
+    }
+    
+    .divider {
+        padding:0 5px;
+        color: #999;
+    }
+    
+    .active a {
+        color: $gray-dark;
+    }
+    
+    .trail-browse {
+        display: none !important;
+    }
 }
