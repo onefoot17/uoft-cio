@@ -304,13 +304,7 @@ a {
     }
     
     // Highlights
-    &#{$ms}#{$highlights} {
-        &#{$es}postsCon {
-            @include display-flex(
-                $align-items: flex-start
-            );
-        }
-        
+    &#{$ms}#{$highlights} {        
         &#{$es}heading {
             color: var(--blue-dark);
             text-align: center;
@@ -323,6 +317,8 @@ a {
             @include for-tablet-landscape-up {
                 flex-basis: 75%;
             }
+
+            display: block;
 
             > * {
                 flex-basis: 50%;
@@ -448,66 +444,48 @@ a {
             }
         }
     }
-}
-
-// Footer
-.#{$footer} {
-    background-color: var(--gray-very-dark);
-    color: var(--white);
-    font-size: 2rem;
-
-    .nav__menu--footer {
-        padding: 0 $padding*4 $padding*4;
-
-        > * {
+    
+    // Footer
+    &#{$ms}footer {
+        background-color: var(--gray-very-dark);
+        color: var(--white);
+        font-size: 2rem;
+        
+        
+        .section__width--footer {
             @include display-flex(
+                $align-items: flex-start,
                 $justify-content: center
             );
+            
+            > * {
+                padding: 0 $padding*2;
+            }
+        }
+        
+        &#{$es}title {
+            margin-bottom: $margin;
+        }
+
+        li,
+        p {
+            margin-bottom: $margin;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+
+        .menu-item a {
             @include line-height;
-            @include for-phone-only {
-                flex-basis: 100%;
-                margin-bottom: $margin;
-                margin-right: 0;
 
-                &:last-child{
-                    margin-bottom: 0;
-                }
-            }
-
-            align-self: stretch;
-            border: 3px dashed var(--blue-light);
-            flex: 1;
-            flex-direction: column;
-            margin-right: $margin*2;
-            padding-top: $padding*4;
-            padding-bottom: $padding*4;
-            text-align: center;
-
-            &:last-child {
-                margin-right: 0;
-            }
+            display: block;
+            font-size: 1.2rem;
+            text-decoration: none;
         }
-    }
-    
-    &#{$es}bottom {
-        @include display-flex;
-
-        > * {
-            @include for-phone-only {
-                margin-bottom: $margin;
-                margin-right: 0;
-                
-                &:last-child{
-                    margin-bottom: 0;
-                }
-            }
-        }
-
-        border-top: 1px solid var(--blue-light);
-        padding: $padding*2 $padding*2 0;
     }
 }
-
+        
 // Breadcrumbs
 .breadcrumbs {
     background-color: $white;

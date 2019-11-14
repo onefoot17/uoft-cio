@@ -14,6 +14,12 @@
         }
     }
 
+    // Social Links Navigation Menu
+    add_action( 'init', 'register_menu_social_links' );
+    function register_menu_social_links() {
+        register_nav_menu( 'social-links',__( 'Social Links' ) );
+    }
+    
     // Footer Navigation Menu
     add_action( 'init', 'register_menu_footer' );
     function register_menu_footer() {
@@ -41,67 +47,32 @@
     // SVG Upload
     function cc_mime_types($mimes) {
         $mimes['svg'] = 'image/svg+xml';
+
         return $mimes;
-      }
-      add_filter('upload_mimes', 'cc_mime_types');
+    }
+    add_filter('upload_mimes', 'cc_mime_types');
 
-      //Page Slug Body Class
-      function add_slug_body_class( $classes ) {
-          global $post;
+    //Page Slug Body Class
+    function add_slug_body_class( $classes ) {
+        global $post;
 
-          if ( isset( $post ) ) {
-              $classes[] = $post->post_type . '-' . $post->post_name;
-            }
-
-            return $classes;
+        if ( isset( $post ) ) {
+            $classes[] = $post->post_type . '-' . $post->post_name;
         }
-        add_filter( 'body_class', 'add_slug_body_class' );
 
-    /**
-     * Register widgetized area and update sidebar with default widgets
-     */
-    function uoft_bootstrap3_widgets_init() {
+        return $classes;
+    }
+    add_filter( 'body_class', 'add_slug_body_class' );
+    
+    function uoft_widgets_init() {
         register_sidebar( array(
-            'name'          => __( 'Blog Sidebar', 'uoft_bootstrap3' ),
-            'id'            => 'sidebar-global',
-            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</aside>',
-            'before_title'  => '<h3 class="widget-title">',
-            'after_title'   => '</h3>',
-        ) );
-        register_sidebar( array(
-            'name'          => __( 'Homepage Features', 'uoft_bootstrap3' ),
-            'id'            => 'sidebar-features',
-            'before_widget' => '<aside id="%1$s" class="col-md-4 home-widget-container"><div class="widget %2$s">',
-            'after_widget'  => '</div></aside>',
-            'before_title'  => '<h3 class="widget-title">',
-            'after_title'   => '</h3>',
-        ) );
-        register_sidebar( array(
-            'name'          => __( 'Subpage Sidebar', 'uoft_bootstrap3' ),
-            'id'            => 'sidebar-subpage',
-            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</aside>',
-            'before_title'  => '<h3 class="widget-title">',
-            'after_title'   => '</h3>',
-        ) );
-        // register_sidebar( array(
-        // 	'name'          => __( 'CBC Sidebar', 'uoft_bootstrap3' ),
-        // 	'id'            => 'sidebar-cbc',
-        // 	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-        // 	'after_widget'  => '</aside>',
-        // 	'before_title'  => '<h3 class="widget-title">',
-        // 	'after_title'   => '</h3>',
-        // ) );
-
-        register_sidebar( array(
-            'name'          => __( 'Footer Sidebar', 'uoft_bootstrap3' ),
+            'name'          => __( 'Footer', 'cio_2019' ),
             'id'            => 'sidebar-footer',
-            'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</div>',
-            'before_title'  => '<h3 class="widget-title">',
+            'before_widget' => '<section id="%1$s" class="section__footer__widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h3 class="section--footer__title">',
             'after_title'   => '</h3>',
         ) );
     }
-    add_action( 'widgets_init', 'uoft_bootstrap3_widgets_init' );
+    add_action( 'widgets_init', 'uoft_widgets_init' );
 ?>
