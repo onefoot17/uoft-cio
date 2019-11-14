@@ -17,13 +17,13 @@
     // Social Links Navigation Menu
     add_action( 'init', 'register_menu_social_links' );
     function register_menu_social_links() {
-        register_nav_menu( 'social-links',__( 'Social Links' ) );
+        register_nav_menu( 'social-links',__( 'Footer Social Links' ) );
     }
-    
+
     // Footer Navigation Menu
     add_action( 'init', 'register_menu_footer' );
     function register_menu_footer() {
-        register_nav_menu( 'footer',__( 'Footer' ) );
+        register_nav_menu( 'footer',__( 'Footer Related Sites' ) );
     }
 
     // Enqueue Scripts
