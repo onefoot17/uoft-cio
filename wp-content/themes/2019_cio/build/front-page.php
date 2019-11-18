@@ -8,6 +8,7 @@
 
                 <a class="section__button section--news__button" href="/category/news/">
                     <i class="fas fa-caret-right"></i>
+                    
                     <span>More Posts</span>
                 </a>
             </header>
@@ -71,29 +72,79 @@
                 ?>
                             
                         <li class="section--highlights__post">
-                            <a class="section__link section--highlights__link" href="<?php the_permalink(); ?>" target="_blank">
-                                <header class="section--highlights__link__top">
-                                    <h2 class="section__link__title section--highlights__link__title"><?php if (get_field( 'alternative_title' ) ) { the_field( 'alternative_title' ); } else { the_title(); } ?></h2>
+                                <?php 
+                                    if (get_field( 'alternative_image' ) ) {
+                                        echo '<section class="section--highlights__post__left" style="background-image: url(' . wp_get_attachment_image_url( get_post_thumbnail_id(), 'large' ) . ');">' . wp_get_attachment_image(get_field( 'alternative_image' ), 'large', false, array('class' => 'section__post__image section--highlights__post__image') ) . '</section>';
+                                    } elseif ( has_post_thumbnail() ) {
+                                        echo '<section class="section--highlights__post__left" style="background-image: url(' . wp_get_attachment_image_url( get_post_thumbnail_id(), 'large' ) . ');"></section>';
+                                    }
+                                ?>
 
-                                    <button class="section--highlights__button section--highlights__link__button"><?php the_field('read_more_button'); ?></button>
+                            <section class="section--highlights__post__right">
+                                <header class="section--highlights__post__header">
+                                    <h2 class="section__post__title section--highlights__post__title"><?php if ( get_field( 'alternative_title' ) ) { the_field( 'alternative_title' ); } else { the_title(); } ?></h2>
                                 </header>
 
-                                <section class="section--highlights__link__bottom">
-                                    <?php 
-                                        $turn_off_excerpt = get_field('turn_off_excerpt');
+                                <?php 
+                                    $turn_off_excerpt = get_field( 'turn_off_excerpt' );
 
-                                        if( ! $turn_off_excerpt ) {
-                                            echo '<p class="section--highlights__link__excerpt">' . get_the_excerpt();
-                                        }
+                                    if( ! $turn_off_excerpt ) {
+                                        echo '<p class="section--highlights__post__excerpt">' . get_the_excerpt() . '</p>';
+                                    }
+                                    
+                                    $read_more_button = get_field( 'read_more_button' );
+                                    
+                                    if( $read_more_button ) {
+                                        echo '<button class="section--highlights__button section--highlights__post__button">';
                                         
-                                        if (get_field( 'alternative_image' ) ) {
-                                            echo '<section class="section--highlights__link__image-con">' . wp_get_attachment_image(get_field( 'alternative_image' ), 'large', false, array('class' => 'section__link__image section--highlights__link__image') ) . '</section>';
-                                        } elseif ( has_post_thumbnail() ) {
-                                            echo '<section class="section--highlights__link__image-con">' . wp_get_attachment_image(get_post_thumbnail_id(), 'large', false, array('class' => 'section__link__image section--highlights__link__image') ) . '</section>';
-                                        }
-                                    ?>
-                                </section>
-                            </a>
+                                        the_field( 'read_more_button' );
+                                        
+                                        echo '</button>';
+                                    }
+                                    
+                                    $additional_links_1 = get_field( 'additional_links_1' );
+                                    
+                                    $additional_links_2 = get_field( 'additional_links_2' );
+                                    
+                                    $additional_links_3 = get_field( 'additional_links_3' );
+
+                                    if( $additional_links_1 ) {
+                                        $additional_links_1_url = $additional_links_1['url'];
+                                        $additional_links_1_title = $additional_links_1['title'];
+                                        $additional_links_1_target = $additional_links_1['target'] ? $additional_links_1['target'] : '_self';
+
+                                        echo '<ul class="section--highlights__post__additional_links">' . 
+                                        '<li><a class="button" href="' . esc_url( $additional_links_1_url ) . '" target="' . esc_attr( $additional_links_1_target ) . '"><i class="fas fa-caret-right"></i>' . esc_html( $additional_links_1_title ) . '</a></li>';
+                                    }
+
+                                    if ( ! $additional_links_2 ) {
+                                        echo '</ul>';
+                                    }
+
+                                    if( $additional_links_2 ) {
+                                        $additional_links_2_url = $additional_links_2['url'];
+                                        $additional_links_2_title = $additional_links_2['title'];
+                                        $additional_links_2_target = $additional_links_2['target'] ? $additional_links_2['target'] : '_self';
+
+                                        echo '<li><a class="button" href="' . esc_url( $additional_links_2_url ) . '" target="' . esc_attr( $additional_links_2_target ) . '"><i class="fas fa-caret-right"></i>' . esc_html( $additional_links_2_title ) . '</a></li>';
+                                    }
+
+                                    if ( ! $additional_links_3 ) {
+                                        echo '</ul>';
+                                    }
+
+                                    if( $additional_links_3 ) {
+                                        $additional_links_3_url = $additional_links_3['url'];
+                                        $additional_links_3_title = $additional_links_3['title'];
+                                        $additional_links_3_target = $additional_links_3['target'] ? $additional_links_3['target'] : '_self';
+
+                                        echo '<li><a class="button" href="' . esc_url( $additional_links_3_url ) . '" target="' . esc_attr( $additional_links_3_target ) . '"><i class="fas fa-caret-right"></i>' . esc_html( $additional_links_3_title ) . '</a></li>';
+                                        
+                                        echo '</ul>';
+                                    }
+
+                                ?>
+                            </section>
                         </li>
                 <?php
                     endforeach;

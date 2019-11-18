@@ -13,7 +13,7 @@ body {
         $line-height: 1
     );
     
-    background-color: var(--gray-light);
+    background-color: var(--white);
     display: flex;
     flex-direction: column;
     font-family: $font-family;
@@ -53,66 +53,78 @@ a {
     color: inherit;
 }
 
-// Header
-.#{$header} {
-    @include display-flex(
-        $align-items: flex-start,
-        $flex-basis: 50%,
-        $justify-content: center
-    );
-    
-    background-color: var(--black);
-    
-    &#{$es}logos {
-        @include display-flex(
-            $align-items: flex-end,
-            $flex-wrap: nowrap,
-            $media-queries: false
-        );
-        @include for-phone-only {
-            align-items: center;
-            margin-bottom: $margin;
-        }
-
-        padding: $padding*2;
-
-        > * {
-            @include for-phone-only {
-                flex-basis: 45%;
-                flex-grow: 1;
-            }
-        }
-
-        &#{$es}uoft {
-            max-width: 225px;
-            padding-right: 32px;
-        }
-
-        &#{$es}cio {
-            border-left: 1px solid var(--white);
-            color: var(--white);
-            font-family: $font-family;
-            font-size: 2.6rem;
-            font-weight: 600;
-            padding: $padding/2 $padding*2;
-            padding-left: 32px;
-            text-decoration: none;
-            text-transform: uppercase;
-            
-            &#{$es}top {
-                display: block;
-                font-size: 1.4rem;
-                margin-bottom: $margin/2;
-            }
-        }
-    }
-}
-
 .content {
     flex-grow: 1;
 }
 
 .#{$section} {
+    // Header
+    &#{$ms}header {
+        .section__width--header {
+            @include display-flex(
+                $align-items: center,
+                $flex-basis: 50%,
+                $justify-content: center
+                );
+                
+            background-color: var(--black);
+            padding: 0;
+        }
+        
+        &#{$es}logos {
+            @include display-flex(
+                $flex-wrap: nowrap,
+                $media-queries: false
+            );
+            @include for-phone-only {
+                align-items: center;
+                margin-bottom: $margin;
+            }
+
+            padding: $padding*2;
+
+            > * {
+                @include for-phone-only {
+                    flex-basis: 45%;
+                    flex-grow: 1;
+                }
+            }
+
+            &#{$es}uoft {
+                max-width: 225px;
+                padding-right: 32px;
+            }
+
+            &#{$es}cio {
+                border-left: 1px solid var(--white);
+                color: var(--white);
+                font-family: $font-family;
+                font-size: 2.6rem;
+                font-weight: 600;
+                padding: $padding/2 $padding*2;
+                padding-left: 32px;
+                text-decoration: none;
+                text-transform: uppercase;
+                
+                &#{$es}top {
+                    display: block;
+                    font-size: 1.4rem;
+                    margin-bottom: $margin/2;
+                }
+            }
+        }
+
+        &#{$es}text {
+            color: var(--white);
+            text-align: center;
+        }
+
+        &#{$es}sign {
+            margin: 0 auto;
+            max-width: 200px;
+        }
+    }
+
     &#{$es}width {
         margin: 0 auto;
         max-width: $section-width;
@@ -311,83 +323,46 @@ a {
         }
 
         &#{$es}posts {
-            @include for-tablet-portrait-up {
-                flex-basis: 100%;
-            }
-            @include for-tablet-landscape-up {
-                flex-basis: 75%;
-            }
-
             display: block;
-
-            > * {
-                flex-basis: 50%;
-                padding-right: $padding;
-
-                @include for-phone-only {
-                    flex-basis: 100%;
-                }
-            }
         }
 
         &#{$es}post {
-            display: flex;
+            @include display-flex;
+
             align-self: stretch;
-            padding-top: 0;
-            padding-bottom: $padding*2;
-
-            &:nth-of-type(1) .section__link {
-                background: linear-gradient(45deg, var(--white) 0%, var(--gray-light) 5%, var(--gray-medium) 15%, var(--gray-dark) 35%, var(--gray-medium) 50%, var(--gray-light) 75%, var(--white) 100%);
-            }
-
-            &:nth-of-type(2) .section__link {
-                background: linear-gradient(225deg, var(--white) 0%, var(--blue-very-light) 5%, var(--blue-light) 15%, var(--blue-medium) 35%, var(--gray-medium) 50%, var(--gray-light) 75%, var(--white) 100%);
-            }
-
-            &:nth-of-type(3) .section__link {
-                background: linear-gradient(135deg, var(--white) 0%, var(--gold-very-light) 5%, var(--gold-light) 15%, var(--gold-medium) 35%, var(--gray-light) 50%, var(--gray-medium) 75%, var(--gray-dark) 100%);
-            }
-
-            &:nth-of-type(4) .section__link {
-                background: linear-gradient(315deg, var(--green-medium) 0%, var(--green-light) 15%, var(--green-very-light) 35%, var(--white) 50%, var(--gray-light) 75%, var(--gray-medium) 100%);
-            }
-        }
-
-        &#{$es}link {
-            @include background-gradient;
-
-            border: 1px solid var(--white);
+            background-color: var(--white);
             color: var(--black);
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            padding: $padding*2;
-            text-align: center;
+            flex-basis: auto;
+            padding: 0;
 
-            &#{$es}top {
-                margin-bottom: $margin*2;
+            > * {
+                align-self: stretch;
+                background-position-x: center;
+                background-position-y: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                flex-basis: 50%;
+            }
+
+            &:nth-of-type(odd) {
+                background-color: var(--blue-very-light);
+            }
+
+            &:nth-of-type(even) {
+                background-color: var(--white);
+                border: 1px solid var(--blue-very-light);
+                border-top: none;
+                border-right: none;
+                flex-direction: row-reverse;
+            }
+
+            &#{$es}right {
+                padding: $padding*4;
             }
 
             &#{$es}title {
                 font-size: 3rem;
                 margin-bottom: $margin;
-            }
-            
-            &#{$es}button {
-                @include button-styles;
-                
-                display: inline-block;
-            }
-            
-            &#{$es}bottom {
-                @include display-flex(
-                    $align-items: flex-start
-                );
-                
-                > * {
-                    flex-basis: 50%;
-                    flex-grow: 1;
-                }
             }
                 
             &#{$es}excerpt {
@@ -395,10 +370,64 @@ a {
 
                 font-size: 1.5rem;
                 text-align: left;
+
+                + * {
+                    margin-top: $margin;
+                }
+            }
+            
+            &#{$es}button {
+                @include button-hover;
+                @include button-styles(
+                    $background-color: transparent,
+                    $border-color: $blue-light,
+                    $color: $blue-light
+                );
+                @include transition;
+                
+                display: inline-block;
             }
 
-            &#{$es}excerpt + &#{$es}image-con {
-                padding-left: $padding;
+            &#{$es}additional_links {
+                li {
+                    display: block;
+                    margin-bottom: $margin;
+                    
+                    &:last-child {
+                        margin-bottom: 0;
+
+                        a {
+                            border-bottom: none;
+                        }
+                    }
+                }
+                
+                a {
+                    @include button-hover(
+                        $background-color: transparent,
+                        $color: var(--black)
+                    );
+                    @include button-styles(
+                        $background-color: transparent,
+                        $color: $blue-dark,
+                        $padding: 0
+                    );
+                    @include transition;
+
+                    border-bottom-color: $blue-light;
+                    border-radius: 0;
+                    display: inline-block;                    
+                    padding-bottom: $padding/2;
+                    padding-left: $padding;
+
+                    &:hover {
+                        border-bottom-color: var(--black);
+                    }
+                }
+
+                i {
+                    padding-right: $padding;
+                }
             }
         }
     
