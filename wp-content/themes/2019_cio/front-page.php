@@ -55,7 +55,7 @@
                     global $post;
 
                     $args = array (
-                        'posts_per_page' => 4,
+                        'posts_per_page' => 3,
                         'meta_query' => array (
                             array (
                                 'key' => 'include_on_home_page',
@@ -113,12 +113,12 @@
                                         $additional_links_1_title = $additional_links_1['title'];
                                         $additional_links_1_target = $additional_links_1['target'] ? $additional_links_1['target'] : '_self';
 
-                                        echo '<ul class="section--highlights__post__additional_links">' . 
-                                        '<li><a class="button" href="' . esc_url( $additional_links_1_url ) . '" target="' . esc_attr( $additional_links_1_target ) . '"><i class="fas fa-caret-right"></i>' . esc_html( $additional_links_1_title ) . '</a></li>';
+                                        echo '<div class="section--highlights__post__additional_links">' . 
+                                        '<a class="button" href="' . esc_url( $additional_links_1_url ) . '" target="' . esc_attr( $additional_links_1_target ) . '"><i class="fas fa-caret-right"></i>' . esc_html( $additional_links_1_title ) . '</a>';
                                     }
 
-                                    if ( ! $additional_links_2 ) {
-                                        echo '</ul>';
+                                    if ( empty( $additional_links_2 ) ) {
+                                        echo '</div><!-- additional_links_1 -->';
                                     }
 
                                     if( $additional_links_2 ) {
@@ -126,11 +126,11 @@
                                         $additional_links_2_title = $additional_links_2['title'];
                                         $additional_links_2_target = $additional_links_2['target'] ? $additional_links_2['target'] : '_self';
 
-                                        echo '<li><a class="button" href="' . esc_url( $additional_links_2_url ) . '" target="' . esc_attr( $additional_links_2_target ) . '"><i class="fas fa-caret-right"></i>' . esc_html( $additional_links_2_title ) . '</a></li>';
+                                        echo '<a class="button" href="' . esc_url( $additional_links_2_url ) . '" target="' . esc_attr( $additional_links_2_target ) . '"><i class="fas fa-caret-right"></i>' . esc_html( $additional_links_2_title ) . '</a>';
                                     }
 
-                                    if ( ! $additional_links_3 ) {
-                                        echo '</ul>';
+                                    if ( empty( $additional_links_3 ) ) {
+                                        echo '</div><!-- additional_links_2 -->';
                                     }
 
                                     if( $additional_links_3 ) {
@@ -138,9 +138,9 @@
                                         $additional_links_3_title = $additional_links_3['title'];
                                         $additional_links_3_target = $additional_links_3['target'] ? $additional_links_3['target'] : '_self';
 
-                                        echo '<li><a class="button" href="' . esc_url( $additional_links_3_url ) . '" target="' . esc_attr( $additional_links_3_target ) . '"><i class="fas fa-caret-right"></i>' . esc_html( $additional_links_3_title ) . '</a></li>';
+                                        echo '<a class="button" href="' . esc_url( $additional_links_3_url ) . '" target="' . esc_attr( $additional_links_3_target ) . '"><i class="fas fa-caret-right"></i>' . esc_html( $additional_links_3_title ) . '</a>';
                                         
-                                        echo '</ul>';
+                                        echo '</div><!-- additional_links_3 -->';
                                     }
 
                                 ?>
@@ -151,7 +151,11 @@
 
                     wp_reset_postdata();
                 ?>
-            </ul>
+
+                <li class="section--highlights__post section--highlights__post--contact">
+                    <?php dynamic_sidebar( 'sidebar-contact' ); ?>
+                </li>
+            </ul><!-- section--highlights__posts -->
         </section>
     </section>
 

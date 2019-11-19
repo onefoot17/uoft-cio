@@ -14,16 +14,14 @@
         }
     }
 
-    // Social Links Navigation Menu
-    add_action( 'init', 'register_menu_social_links' );
-    function register_menu_social_links() {
-        register_nav_menu( 'social-links',__( 'Footer Social Links' ) );
-    }
-
-    // Footer Navigation Menu
-    add_action( 'init', 'register_menu_footer' );
-    function register_menu_footer() {
-        register_nav_menu( 'footer',__( 'Footer Related Sites' ) );
+    // Menus
+    if ( function_exists ( 'register_nav_menus' ) ) {
+        register_nav_menus (
+            array (
+                'social-links' => esc_html__( 'Social Links', 'cio_2019' ),
+                'footer' => esc_html__( 'Footer', 'cio_2019' )
+            )
+        );
     }
 
     // Enqueue Scripts
@@ -65,6 +63,14 @@
     add_filter( 'body_class', 'add_slug_body_class' );
     
     function uoft_widgets_init() {
+        register_sidebar( array(
+            'name'          => __( 'Contact Information', 'cio_2019' ),
+            'id'            => 'sidebar-contact',
+            'before_widget' => '<section id="%1$s" class="section--contact__widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="section__heading section__post__title section--highlights__post__title section--contact__title">',
+            'after_title'   => '</h2>',
+        ) );
         register_sidebar( array(
             'name'          => __( 'Footer', 'cio_2019' ),
             'id'            => 'sidebar-footer',

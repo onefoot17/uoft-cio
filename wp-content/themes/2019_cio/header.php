@@ -34,6 +34,6 @@
                     </section>
                 </section>
 
-                <section class="section--header__photo" style="background-image: url(https://cio.utoronto.ca/wp-content/uploads/2019/11/imgpsh_mobile_save-1.jpg);"></section>
+                <section class="section--header__photo" style="background-image: url(https://cio.utoronto.ca/wp-content/uploads/2019/11/imgpsh_mobile_save.jpg);"></section>
             </section>
         </header>
