@@ -19,7 +19,7 @@
 
                     $args = array(
                         'category_name' => 'Blog',
-                        'posts_per_page' => 4
+                        'posts_per_page' => 3
                     );
 
                     $postslist = get_posts( $args );
@@ -82,7 +82,7 @@
 
                             <section class="section--highlights__post__right">
                                 <header class="section--highlights__post__header">
-                                    <h2 class="section__post__title section--highlights__post__title"><?php if ( get_field( 'alternative_title' ) ) { the_field( 'alternative_title' ); } else { the_title(); } ?></h2>
+                                    <h2 class="section__heading section__post__title section--highlights__post__title"><?php if ( get_field( 'alternative_title' ) ) { the_field( 'alternative_title' ); } else { the_title(); } ?></h2>
                                 </header>
 
                                 <?php 
@@ -158,7 +158,7 @@
     <section class="section section--follow">
         <section class="section__width section--follow__width">
             <header class="section__header section--follow__header">
-                <h1 class="section--follow__heading">Follow Us</h1>
+                <h1 class="section__heading section--follow__heading">Follow Us</h1>
             </header>
 
             <ul class="section__posts section--follow__posts">
