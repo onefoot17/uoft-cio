@@ -68,7 +68,7 @@
         register_sidebar( array(
             'name'          => __( 'Footer', 'cio_2019' ),
             'id'            => 'sidebar-footer',
-            'before_widget' => '<section id="%1$s" class="section__footer__widget %2$s">',
+            'before_widget' => '<section id="%1$s" class="section--footer__widget %2$s">',
             'after_widget'  => '</section>',
             'before_title'  => '<h3 class="section--footer__title">',
             'after_title'   => '</h3>',
