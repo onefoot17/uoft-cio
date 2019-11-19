@@ -65,22 +65,31 @@ a {
                 $align-items: center,
                 $flex-basis: 50%,
                 $justify-content: center
-                );
+            );
                 
-            background-color: var(--black);
+            background-color: var(--blue-dark);
             padding: 0;
+            
+            > * {
+                align-self: stretch;
+                background-position-x: center;
+                background-position-y: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
         }
         
         &#{$es}logos {
             @include display-flex(
-                $flex-wrap: nowrap,
+                $justify-content: center,
                 $media-queries: false
-            );
-            @include for-phone-only {
-                align-items: center;
-                margin-bottom: $margin;
-            }
-
+                );
+                @include for-phone-only {
+                    align-items: center;
+                    margin-bottom: $margin;
+                }
+                
+            flex-direction: column;
             padding: $padding*2;
 
             > * {
@@ -88,21 +97,21 @@ a {
                     flex-basis: 45%;
                     flex-grow: 1;
                 }
+                
+                padding: $padding/2 $padding*2;
             }
 
             &#{$es}uoft {
                 max-width: 225px;
-                padding-right: 32px;
+                padding-bottom: 32px;
             }
 
             &#{$es}cio {
-                border-left: 1px solid var(--white);
                 color: var(--white);
                 font-family: $font-family;
-                font-size: 2.6rem;
+                font-size: 2.2rem;
                 font-weight: 600;
-                padding: $padding/2 $padding*2;
-                padding-left: 32px;
+                padding-bottom: 32px;
                 text-decoration: none;
                 text-transform: uppercase;
                 
@@ -327,9 +336,10 @@ a {
         }
 
         &#{$es}post {
-            @include display-flex;
+            @include display-flex(
+                $flex-basis: 50%
+            );
 
-            align-self: stretch;
             background-color: var(--white);
             color: var(--black);
             flex-basis: auto;
@@ -341,7 +351,6 @@ a {
                 background-position-y: center;
                 background-repeat: no-repeat;
                 background-size: cover;
-                flex-basis: 50%;
             }
 
             &:nth-of-type(odd) {
@@ -421,7 +430,7 @@ a {
                     padding-left: $padding;
 
                     &:hover {
-                        border-bottom-color: var(--black);
+                        border-bottom-color: var(--blue-dark);
                     }
                 }
 
@@ -476,7 +485,7 @@ a {
     
     // Footer
     &#{$ms}footer {
-        background-color: var(--gray-very-dark);
+        background-color: var(--blue-dark);
         color: var(--white);
         font-size: 2rem;
         
@@ -506,7 +515,12 @@ a {
         }
 
         .menu-item a {
+            @include button-hover(
+                $background-color: transparent,
+                $color: var(--blue-light)
+            );
             @include line-height;
+            @include transition;
 
             display: block;
             font-size: 1.2rem;
