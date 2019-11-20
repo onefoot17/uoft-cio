@@ -248,6 +248,14 @@ a {
         }
     }
 
+    &#{$es}widget {
+        p {
+            @include line-height;
+
+            font-size: 1.5rem;
+        }
+    }
+
     // Category pages
     &#{$ms}category {
         background-color: $white;
@@ -403,6 +411,14 @@ a {
                 @include transition;
                 
                 display: inline-block;
+
+                &#{$es}link {
+                    text-decoration: none;
+                }
+
+                + .section--highlights__post__additional_links {
+                    margin-top: $margin;
+                }
             }
 
             &#{$es}additional_links {

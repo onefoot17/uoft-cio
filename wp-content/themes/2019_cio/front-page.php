@@ -95,11 +95,11 @@
                                     $read_more_button = get_field( 'read_more_button' );
                                     
                                     if( $read_more_button ) {
-                                        echo '<button class="section--highlights__button section--highlights__post__button">';
+                                        echo '<button class="section--highlights__button section--highlights__post__button"><a class="section--highlights__post__button__link" href="' . get_the_permalink() . '" title="">';
                                         
                                         the_field( 'read_more_button' );
                                         
-                                        echo '</button>';
+                                        echo '</a></button>';
                                     }
                                     
                                     $additional_links_1 = get_field( 'additional_links_1' );

@@ -66,7 +66,7 @@
         register_sidebar( array(
             'name'          => __( 'Contact Information', 'cio_2019' ),
             'id'            => 'sidebar-contact',
-            'before_widget' => '<section id="%1$s" class="section--contact__widget %2$s">',
+            'before_widget' => '<section id="%1$s" class="section__widget section--contact__widget %2$s">',
             'after_widget'  => '</section>',
             'before_title'  => '<h2 class="section__heading section__post__title section--highlights__post__title section--contact__title">',
             'after_title'   => '</h2>',
