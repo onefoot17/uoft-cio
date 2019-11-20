@@ -26,7 +26,7 @@
                     </a>
 
                     <section class="section--header__text">
-                        <img class="section--header__sign" src="https://cio.utoronto.ca/wp-content/uploads/2019/11/signature5dd462e16f1d7.png" />
+                        <img class="section--header__text__sign" src="https://cio.utoronto.ca/wp-content/uploads/2019/11/signature5dd462e16f1d7.png" />
 
                         <p>Bo Wandschneider, CIO</p>
 
@@ -34,6 +34,6 @@
                     </section>
                 </section>
 
-                <section class="section--header__photo" style="background-image: url(https://cio.utoronto.ca/wp-content/uploads/2019/11/imgpsh_mobile_save.jpg);"></section>
+                <section class="section--header__text__photo" style="background-image: url(https://cio.utoronto.ca/wp-content/uploads/2019/11/imgpsh_mobile_save.jpg);"></section>
             </section>
         </header>

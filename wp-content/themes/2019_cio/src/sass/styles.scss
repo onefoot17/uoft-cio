@@ -125,16 +125,23 @@ a {
         &#{$es}text {
             color: var(--white);
             text-align: center;
-        }
+            
+            > * {
+                margin-bottom: $margin/2;
 
-        &#{$es}sign {
-            margin: 0 auto;
-            max-width: 200px;
-        }
-
-        &#{$es}photo {
-            @include for-phone-only {
-                min-height: 300px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+            
+            &#{$es}sign {
+                max-width: 200px;
+            }
+            
+            &#{$es}photo {
+                @include for-phone-only {
+                    min-height: 300px;
+                }
             }
         }
     }
