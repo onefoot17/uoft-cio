@@ -13,11 +13,12 @@ body {
         $line-height: 1
     );
     
-    background-color: var(--white);
+    background-color: var(--gray-light);
     display: flex;
     flex-direction: column;
     font-family: $font-family;
     min-height: 100vh;
+    padding: .5rem;
     word-break: break-word;
 
     @include for-phone-only {
@@ -45,7 +46,7 @@ h1 {
 p {
     @include line-height;
 
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 a {
@@ -138,10 +139,14 @@ a {
                 max-width: 200px;
             }
             
-            &#{$es}photo {
-                @include for-phone-only {
-                    min-height: 300px;
-                }
+            p {
+                font-size: 1.2rem;
+            }
+        }
+
+        &#{$es}photo {
+            @include for-phone-only {
+                min-height: 300px;
             }
         }
     }
@@ -224,13 +229,22 @@ a {
     }
 
     &#{$es}image-fallback {
-        @include display-flex( $justify-content: center);
+        @include display-flex(
+            $justify-content: flex-start,
+            $media-queries: false
+        );
+        
+        align-self: stretch;
+        border: 1px solid var(--gray-light);
+        flex-basis: 100% !important;
         flex-direction: column;
-        flex-grow: 1;
+        padding: $padding;
     }
 
     &#{$es}link {
         @include button-hover( outside_link );
+
+        text-decoration: none;
 
         &#{$es}title {
             font-family: $font-family;
@@ -240,8 +254,6 @@ a {
         button {
             @include transition;
         }
-
-        text-decoration: none;
         
         &#{$es}image {
             border: 1px solid var(--gray-light);
@@ -258,26 +270,37 @@ a {
 
     // Category pages
     &#{$ms}category {
-        background-color: $white;
-
         &#{$es}width {
-            padding-top: initial;
+            background-color: var(--white);
+            padding-left: $padding;
+            padding-right: $padding;
+        }
+
+        &#{$es}posts {
+            justify-content: flex-start;
         }
 
         &#{$es}post {
-            align-self: stretch;
-            display: flex;
             @include for-tablet-portrait-up {
                 flex-basis: calc( 100% / 3 );
+                flex-grow: 0;
             }
+
+            align-self: stretch;
+            display: flex;
+            min-height: 150px;
             position: relative;
         }
 
         &#{$es}link {
             @include button-hover;
+            @include display-flex(
+                $align-items: initial,
+                $flex-wrap: nowrap,
+                $justify-content: center
+            );
             @include transition;
 
-            display: flex;
             flex-direction: column;
             flex-grow: 1;
             position: relative;
@@ -297,6 +320,78 @@ a {
             position: absolute;
             text-align: left;
             width: 100%;
+        }
+    }
+
+    // Single pages
+    &#{$ms}single {
+        &#{$es}width {
+            background-color: var(--white);
+            padding-left: $padding;
+            padding-right: $padding;
+            
+            h2 {
+                border-bottom: 1px solid var(--gray-medium);
+                font-size: 2rem;
+                margin-bottom: $margin;
+                padding-bottom: $padding/2;
+            }
+
+            h3 {
+                font-size: 1.8rem;
+                margin-bottom: $margin;
+            }
+
+            h4{
+                margin-bottom: $margin;
+            }
+        }
+
+        &#{$es}entry {
+            font-size: 1.5rem;
+
+            img {
+                max-width: 100%;
+                width: auto;
+            }
+
+            div.alignnone {
+                max-width: 100%;
+            }
+
+            p {
+                margin-bottom: $margin*2;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                img {
+                    margin-top: $margin;
+
+                    &.alignright {
+                        float: right;
+                        margin: $margin;
+                    }
+
+                    &:after {
+                        clear: both;
+                    }
+                }
+            }
+
+            ul {
+                list-style-type: disc;
+                padding-left: $padding*2;
+            }
+
+            li {
+                margin-bottom: $margin*2;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
         }
     }
 
@@ -393,7 +488,6 @@ a {
             &#{$es}excerpt {
                 @include line-height;
 
-                font-size: 1.5rem;
                 text-align: left;
 
                 + * {
@@ -525,16 +619,60 @@ a {
         font-size: 2rem;
         
         .section__width--footer {
-            @include display-flex(
-                $align-items: flex-start,
-                $justify-content: center
-            );
-
-            padding-bottom: $padding*2;
-            
             > * {
-                padding-left: $padding*2;
-                padding-right: $padding*2;
+                padding-bottom: $padding*2;
+                padding-left: $padding;
+                padding-right: $padding;
+
+                &:last-child {
+                    padding-bottom: 0;
+                }
+            }
+        }
+
+        .widget_nav_menu {
+            .menu {
+                @include display-flex;
+
+                > * {
+                    @include button-styles(
+                        $background-color: transparent,
+                        $border-color: $white
+                    );
+                    @include button-hover(
+                        inside_link
+                    );
+                    @include display-flex(
+                        $justify-content: center
+                    );
+                    @include line-height;
+                    @include transition;
+                    @include for-phone-only {
+                        flex-basis: 100%;
+                        margin-bottom: $margin;
+                        margin-right: 0;
+        
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+
+                    align-self: stretch;
+                    flex: 1;
+                    flex-direction: column;
+                    margin-right: $margin*2;
+                    padding-top: $padding;
+                    padding-bottom: $padding;
+                    text-align: center;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+
+                a {
+                    text-decoration: none;
+                }
             }
         }
 
@@ -546,35 +684,32 @@ a {
             margin-bottom: $margin;
         }
 
-        li,
-        p {
-            margin-bottom: $margin;
-
-            &:last-of-type {
-                margin-bottom: 0;
+        &#{$es}bottom {
+            @include display-flex;
+    
+            > * {
+                @include for-phone-only {
+                    margin-bottom: $margin;
+                    margin-right: 0;
+                    
+                    &:last-child{
+                        margin-bottom: 0;
+                    }
+                }
             }
-        }
-
-        .menu-item a {
-            @include button-hover(
-                $background-color: transparent,
-                $color: var(--blue-light)
-            );
-            @include line-height;
-            @include transition;
-
-            display: block;
-            font-size: 1.2rem;
-            text-decoration: none;
+    
+            border-top: 1px solid var(--white);
+            padding-top: $padding*2;
         }
     }
 }
-        
+
 // Breadcrumbs
 .breadcrumbs {
     background-color: $white;
-    font-size: 1.2rem;
-    padding: $padding;
+    font-size: 1.3rem;
+    margin-bottom: $margin*2;
+    text-transform: uppercase;
 
     a {
         color: $gray-medium;
@@ -582,12 +717,12 @@ a {
     }
     
     .divider {
-        padding:0 5px;
-        color: #999;
+        padding: 0 $padding/2;
+        color: $gray-medium;
     }
     
     .active a {
-        color: $gray-dark;
+        color: $blue-dark;
     }
     
     .trail-browse {

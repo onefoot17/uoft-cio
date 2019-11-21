@@ -6,7 +6,7 @@
             <header class="section__header">
                 <h1 class="section__heading section--news__heading">Blog</h1>
 
-                <a class="section__button section--news__button" href="/category/news/">
+                <a class="section__button section--news__button" href="/category/blog/">
                     <i class="fas fa-caret-right"></i>
                     
                     <span>More Posts</span>
