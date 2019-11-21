@@ -39,6 +39,7 @@ $footer: 'footer' !default;
 }
 :root {
     --black: #{ $black };
+    --black--rgb: #{ hex-to-rgb( $black ) };
     --blue-very-light: #{ $blue-very-light };
     --blue-light: #{ $blue-light };
     --blue-light--rgb: #{ hex-to-rgb( $blue-light ) };

@@ -205,15 +205,23 @@ a {
 
             &#{$es}prev,
             &#{$es}next {
-                @include button-styles( $background-color:transparent, $padding: 0 );
-                @include button-hover( inside_link );
+                @include button-styles( 
+                    $background-color: transparent,
+                    $border-color: var(--blue-light),
+                    $padding: 0
+                );
+                @include button-hover(
+                    inside_link
+                );
                 @include for-phone-only {
                     flex-basis: 50%;
                 }
             }
             
             a {
-                @include button-styles;
+                @include button-styles(
+                    $color: var(--blue-light)
+                );
                 @include display-flex(
                     $flex-grow: 1,
                     $flex-shrink: 1
@@ -312,7 +320,7 @@ a {
 
         &#{$es}button {
             @include button-styles( $padding: $padding/2 );
-            @include background-color-rgba( var(--blue-dark--rgb), 0.9 );
+            @include background-color-rgba( var(--black--rgb), 0.8 );
             @include line-height;
 
             bottom: 0;
@@ -402,7 +410,7 @@ a {
         &#{$es}button {
             @include button-styles(
                 $background-color: transparent,
-                $color: $blue-dark
+                $color: var(--blue-dark)
             );
         }
 
@@ -499,8 +507,8 @@ a {
                 @include button-hover;
                 @include button-styles(
                     $background-color: transparent,
-                    $border-color: $blue-light,
-                    $color: $blue-light
+                    $border-color: var(--blue-light),
+                    $color: var(--blue-light)
                 );
                 @include transition;
                 
@@ -523,12 +531,12 @@ a {
                     );
                     @include button-styles(
                         $background-color: transparent,
-                        $color: $blue-dark,
+                        $color: var(--blue-dark),
                         $padding: 0
                     );
                     @include transition;
 
-                    border-bottom-color: $blue-light;
+                    border-bottom-color: var(--blue-light);
                     border-radius: 0;
                     display: block;
                     margin-bottom: $margin;
@@ -637,7 +645,7 @@ a {
                 > * {
                     @include button-styles(
                         $background-color: transparent,
-                        $border-color: $white
+                        $border-color: var(--white)
                     );
                     @include button-hover(
                         inside_link
@@ -706,23 +714,23 @@ a {
 
 // Breadcrumbs
 .breadcrumbs {
-    background-color: $white;
+    background-color: var(--white);
     font-size: 1.3rem;
     margin-bottom: $margin*2;
     text-transform: uppercase;
 
     a {
-        color: $gray-medium;
+        color: var(--gray-medium);
         text-decoration: none;
     }
     
     .divider {
         padding: 0 $padding/2;
-        color: $gray-medium;
+        color: var(--gray-medium);
     }
     
     .active a {
-        color: $blue-dark;
+        color: var(--blue-dark);
     }
     
     .trail-browse {
