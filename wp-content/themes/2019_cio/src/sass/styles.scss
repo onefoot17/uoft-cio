@@ -336,23 +336,21 @@ a {
         &#{$es}width {
             background-color: var(--white);
             padding-left: $padding;
-            padding-right: $padding;
-            
-            h2 {
-                border-bottom: 1px solid var(--gray-medium);
-                font-size: 2rem;
-                margin-bottom: $margin;
-                padding-bottom: $padding/2;
-            }
+            padding-right: $padding;            
+        }
 
-            h3 {
-                font-size: 1.8rem;
-                margin-bottom: $margin;
-            }
-
-            h4{
-                margin-bottom: $margin;
-            }
+        &#{$es}title {
+            font-size: 2rem;
+            margin-bottom: $margin;
+            padding-bottom: $padding/2;
+        }
+        
+        &#{$es}date {
+            border-bottom: 1px solid var(--gray-medium);
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: $margin;
+            padding-bottom: $padding;
         }
 
         &#{$es}entry {
@@ -365,6 +363,19 @@ a {
 
             div.alignnone {
                 max-width: 100%;
+            }
+
+            h3 {
+                @include line-height(
+                    $line-height: 1.5
+                );
+
+                font-size: 1.8rem;
+                margin-bottom: $margin;
+            }
+
+            h4 {
+                margin-bottom: $margin;
             }
 
             p {
@@ -391,6 +402,10 @@ a {
             ul {
                 list-style-type: disc;
                 padding-left: $padding*2;
+
+                + p {
+                    margin-top: $margin*2;    
+                }
             }
 
             li {
@@ -399,6 +414,30 @@ a {
                 &:last-child {
                     margin-bottom: 0;
                 }
+            }
+
+            .wp-caption {
+                border-top:1px solid #cccccc;
+                border-bottom:1px solid #cccccc;
+                padding:20px;
+                margin-left:15px;
+                margin-right:15px;
+                margin-bottom:10px;
+
+                &.alignleft {
+                    float: left;
+                }
+
+                &.alignright {
+                    float: right;
+                }
+            }
+
+            p.wp-caption-text {
+                font-size:12px;
+                color: #555555;
+                margin:0px;
+                padding-top:10px;
             }
         }
     }

@@ -17,6 +17,14 @@
 		"oAP": "/build/404.php",
 		"oF": 0
 		},
+	"/author.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/author.php",
+		"oF": 0
+		},
 	"/build": {
 		"ft": 65536,
 		"oA": 1,
