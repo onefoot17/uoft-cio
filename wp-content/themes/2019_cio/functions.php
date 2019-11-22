@@ -19,7 +19,10 @@
         register_nav_menus (
             array (
                 'social-links' => esc_html__( 'Social Links', 'cio_2019' ),
-                'footer' => esc_html__( 'Footer', 'cio_2019' )
+                'footer' => esc_html__( 'Footer', 'cio_2019' ),
+                'primary' => __( 'Primary Menu', 'cio_2019' ),
+                'utility' => __( 'Toolbar Menu', 'cio_2019' ),
+                'footer' => __( 'Footer Menu', 'cio_2019' )
             )
         );
     }
