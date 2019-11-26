@@ -7,8 +7,7 @@
         <meta name="viewport" content="width=device-width" />
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Niconne&display=swap" rel="stylesheet">
 
         <?php wp_head(); ?>
     </head>
@@ -26,7 +25,7 @@
                     </a>
 
                     <section class="section--header__logos__text">
-                        <img class="section--header__logos__text__sign" src="https://cio.utoronto.ca/wp-content/uploads/2019/11/signature5dd462e16f1d7.png" />
+                        <section class="section--header__logos__text__sign">Bo Wandschneider</section>
 
                         <p>Bo Wandschneider, CIO</p>
 
