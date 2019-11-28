@@ -772,6 +772,7 @@ a {
 
     &-label {
         border-radius: 4px;
+        flex-grow: 1;
     }
 
     &-field {
@@ -794,8 +795,24 @@ a {
     }
 
     // No results
-    &-no-results &-form-container &-form {
-        width: 50%;
+    &-no-results {
+        .search-form-container {
+            @include for-tablet-portrait-up { 
+                width: 50%;
+            }
+            
+            .search-form {
+                @include button-styles(
+                    $background-color: var(--white),
+                    $border-color: var(--black),
+                    $padding: 0
+                );
+            }
+                
+            .search-field {
+                width: 100%;
+            }
+        }
     }
 
     &-not-found-text {
