@@ -106,12 +106,12 @@
 		"opt": 0,
 		"q": 100
 		},
-	"/search.php": {
+	"/searchform.php": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/build/search.php",
+		"oAP": "/build/searchform.php",
 		"oF": 0
 		},
 	"/single.php": {

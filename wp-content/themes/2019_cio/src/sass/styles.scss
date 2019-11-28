@@ -124,6 +124,7 @@ a {
             
             &#{$es}text {
                 color: var(--white);
+                padding-bottom: $padding*2;
                 
                 > * {
                     margin-bottom: $margin/2;
@@ -752,5 +753,52 @@ a {
     
     .trail-browse {
         display: none !important;
+    }
+}
+
+// Search
+.#{$search} {
+    &-form {
+        @include button-styles(
+            $background-color: var(--white),
+            $border-color: transparent,
+            $padding: 0
+        );
+        @include display-flex(
+            $flex-wrap: nowrap,
+            $media-queries: false
+        );
+    }
+
+    &-label {
+        border-radius: 4px;
+    }
+
+    &-field {
+        background: var(--white);
+        border: none;
+        border-radius: 4px !important;
+        padding: $padding;
+
+        &::placeholder {
+            color: var(--gray-medium);
+        }
+    }
+    
+    &-submit {
+        background: none;
+        border: none;
+        color: var(--black);
+        cursor: pointer;
+        padding: .5rem;
+    }
+
+    // No results
+    &-no-results &-form-container &-form {
+        width: 50%;
+    }
+
+    &-not-found-text {
+        margin-bottom: $margin*2;
     }
 }

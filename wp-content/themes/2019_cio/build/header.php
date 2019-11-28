@@ -31,6 +31,8 @@
 
                         <p>University of Toronto</p>
                     </section>
+
+                    <section class="search-form-container"><?php get_search_form(); ?></section>
                 </section>
 
                 <section class="section--header__photo" style="background-image: url(https://cio.utoronto.ca/wp-content/uploads/2019/11/imgpsh_mobile_save.jpg);"></section>
