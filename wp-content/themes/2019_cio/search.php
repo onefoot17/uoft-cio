@@ -44,7 +44,7 @@
                     echo '</nav>';
                 } ?>
             <?php else : ?>
-                <p class="search-not-found-text"><?php esc_html_e( 'Sorry, nothing matched your search. Please try again.', 'its_2019' ); ?></p>
+                <p class="search-not-found-text"><?php esc_html_e( 'Sorry, nothing matched your search. Please try again.', 'cio_2019' ); ?></p>
 
                 <section class="search-form-container"><?php get_search_form(); ?></section>
             <?php endif; ?>
